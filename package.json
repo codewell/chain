@@ -1,0 +1,22 @@
+{
+  "name": "@codewell/chain",
+  "version": "0.0.1",
+  "description": "Chaining function in JavaScript",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewell/chain.git"
+  },
+  "author": "Filip Johansson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codewell/chain/issues"
+  },
+  "homepage": "https://github.com/codewell/chain#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
