@@ -1,4 +1,4 @@
-const chain = require('../src');
+const { chain } = require('../src');
 
 const addOne = (n) => n + 1;
 
