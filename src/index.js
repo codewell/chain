@@ -1,16 +1,16 @@
-const validFunctions = require('./validFunctions');
-const chain = require('./chain');
-const asyncChain = require('./asyncChain');
+import validFunctions from "./validFunctions";
+import chain from "./chain";
+import asyncChain from "./asyncChain";
 
 const main = (chainingFunction) => (input, functions) => {
   if (!validFunctions(functions)) {
     // Handle this problem
-    throw new Error(`Invalid input for "functions" argument.`)
+    throw new Error(`Invalid input for "functions" argument.`);
   }
-  return chainingFunction(input, functions)
-}
+  return chainingFunction(input, functions);
+};
 
-module.exports = {
+export default {
   chain: main(chain),
   asyncChain: main(asyncChain),
 };
