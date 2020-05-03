@@ -14,6 +14,8 @@ chain(0,
 // => 2
 ```
 
+A requirement is therefore that all functions passed as arguments to the `chain` function has a return value (functions included).
+
 ## Installation
 
 ```
