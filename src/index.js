@@ -1,16 +1,29 @@
 import validFunctions from "./validFunctions";
-import chain from "./chain";
+import syncChain from "./syncChain";
 import asyncChain from "./asyncChain";
+import containsAsyncFunction from "./containsAsyncFunction";
 
-const main = (chainingFunction) => (input, functions) => {
-  if (!validFunctions(functions)) {
-    // Handle this problem
-    throw new Error(`Invalid input for "functions" argument.`);
+const chain = (...parameters) => {
+  if (parameters.length === 0) {
+    return null;
   }
-  return chainingFunction(input, functions);
+
+  const [nextValue] = parameters;
+  if (parameters.length === 1) {
+    return nextValue;
+  }
+
+  const functions = parameters.slice(1);
+
+  if (!validFunctions(functions)) {
+    throw new Error(`Invalid function argument.`);
+  }
+
+  if (containsAsyncFunction(functions)) {
+    return asyncChain(nextValue, ...functions);
+  }
+
+  return syncChain(nextValue, ...functions);
 };
 
-export default {
-  chain: main(chain),
-  asyncChain: main(asyncChain),
-};
+export default chain;
