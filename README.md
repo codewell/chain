@@ -4,7 +4,7 @@ _JavaScript function for chaining functions_
 
 ## Description
 
-The chaining function takes an arbitrary number of arguments. The first argument is of any type, the rest should all be functions sychronous or asychronous. Chain automatically returns a promise if one or more arguments are an async function. The first parameter is passed as input to the second argument (a funciton) which in turn is passed to the return value to the next funciton and so on. E.g.
+The chaining function takes an arbitrary number of arguments. The first argument is of any type, the rest should all be functions sychronous or asychronous. Chain automatically returns a promise if one or more arguments is an async function. The first parameter is passed as input to the second argument (a funciton) which in turn is passed its return value to the next funciton and so on. E.g.
 
 ```JavaScript
 chain(0,
