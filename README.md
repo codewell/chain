@@ -1,6 +1,6 @@
-# Chain
+# @codewell/chain
 
-_JavaScript function for chaining functions_
+JavaScript function for chaining functions
 
 ## Description
 
