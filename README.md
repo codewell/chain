@@ -32,6 +32,10 @@ const addThree = n => n + 3;
 const multiplyByFive = m => m * 5;
 
 chain(1, addThree, multiplyByFive); // => 20
+```
+
+```JavaScript
+import chain from '@codewell/chain';
 
 // Async
 const addThreeAsync = (n) => new Promise((resolve, reject) => {
