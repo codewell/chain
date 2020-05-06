@@ -27,22 +27,22 @@ npm install @codewell/chain
 ```JavaScript
 import chain from '@codewell/chain';
 
-const foo = n => n + 3;
-const bar = m => m * 5;
+const addThree = n => n + 3;
+const multiplyByFive = m => m * 5;
 
 // Sync
-const result = chain(1, foo, bar); // => 20
+chain(1, addThree, multiplyByFive); // => 20
 
 // Async
-const asyncFoo = (n) => new Promise((resolve, reject) => {
+const addThreeAsync = (n) => new Promise((resolve, reject) => {
   resolve(n + 3);
 })
 
-const asyncFoo = (m) => new Promise((resolve, reject) => {
+const multiplyByFiveAsync = (m) => new Promise((resolve, reject) => {
   resolve(m * 5);
 })
 
-chain(1, asyncFoo, asyncBar)
+chain(1, addThreeAsync, multiplyByFiveAsync)
   .then(result => {
     // Handle result somehow...
   })
