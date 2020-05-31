@@ -1,6 +1,6 @@
 {
   "name": "@codewell/chain",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Chaining function in JavaScript",
   "main": "index.js",
   "repository": {
