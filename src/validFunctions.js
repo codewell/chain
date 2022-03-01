@@ -2,7 +2,7 @@
  * Check if the input is an array containing functions
  * @param {*} functions
  */
-const validFunctions = (functions) => {
+export const validFunctions = (functions) => {
   const allAreFunctions = functions
     .map((fn) => (typeof fn === "function" ? 1 : 0))
     .reduce((sum, value) => sum * value, 1);
@@ -13,5 +13,3 @@ const validFunctions = (functions) => {
 
   return true;
 };
-
-export default validFunctions;
