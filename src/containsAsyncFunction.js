@@ -2,7 +2,5 @@
 
 const filter = (func) => func.constructor.name === "AsyncFunction";
 
-const containsAsyncFunction = (functions) =>
+export const containsAsyncFunction = (functions) =>
   functions.filter(filter).length > 0;
-
-export default containsAsyncFunction;

@@ -1,10 +1,9 @@
-const devLib = require("../lib/dev");
-const prodLib = require("../lib/dev");
+const { chain } = require("../lib/index.js");
 
 const addOneSync = (n) => n + 1;
 
 const addOneAsync = async (n) =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve, _) => {
     setTimeout(() => {
       resolve(n + 1);
     }, 100);
@@ -15,11 +14,11 @@ const addOneAsync = async (n) =>
  */
 
 test("No arguments (sync)", () => {
-  expect(devLib()).toBe(null);
+  expect(chain()).toBe(null);
 });
 
 test("No arguments (async)", async () => {
-  expect(await devLib()).toBe(null);
+  expect(await chain()).toBe(null);
 });
 
 /**
@@ -27,11 +26,11 @@ test("No arguments (async)", async () => {
  */
 
 test("One argument (sync)", () => {
-  expect(devLib("foo")).toBe("foo");
+  expect(chain("foo")).toBe("foo");
 });
 
 test("One argument (async)", async () => {
-  expect(await devLib("foo")).toBe("foo");
+  expect(await chain("foo")).toBe("foo");
 });
 
 /**
@@ -39,22 +38,22 @@ test("One argument (async)", async () => {
  */
 
 test("One argument, one function (sync)", () => {
-  expect(devLib(1, addOneSync)).toBe(2);
+  expect(chain(1, addOneSync)).toBe(2);
 });
 
 test("One argument, one function (async)", async () => {
-  expect(await devLib(1, addOneAsync)).toBe(2);
+  expect(await chain(1, addOneAsync)).toBe(2);
 });
 
 /**
  * One argument, two functions
  */
 test("One argument, two functions (sync)", () => {
-  expect(devLib(1, addOneSync, addOneSync)).toBe(3);
+  expect(chain(1, addOneSync, addOneSync)).toBe(3);
 });
 
 test("One argument, two functions (async)", async () => {
-  expect(await devLib(1, addOneAsync, addOneAsync)).toBe(3);
+  expect(await chain(1, addOneAsync, addOneAsync)).toBe(3);
 });
 
 /**
@@ -63,7 +62,7 @@ test("One argument, two functions (async)", async () => {
 
 test("Two values in a row throws", () => {
   expect(() => {
-    devLib(0, 1);
+    chain(0, 1);
   }).toThrow();
 });
 
@@ -73,7 +72,7 @@ test("Two values in a row throws", () => {
 
 test("A loooong list of functions (sync)", () => {
   expect(
-    devLib(
+    chain(
       0,
       addOneSync,
       addOneSync,
@@ -86,14 +85,14 @@ test("A loooong list of functions (sync)", () => {
       addOneSync,
       addOneSync,
       addOneSync,
-      addOneSync,
-    ),
+      addOneSync
+    )
   ).toBe(12);
 });
 
 test("A loooong list of functions (async)", async () => {
   expect(
-    await devLib(
+    await chain(
       0,
       addOneAsync,
       addOneAsync,
@@ -106,14 +105,14 @@ test("A loooong list of functions (async)", async () => {
       addOneAsync,
       addOneAsync,
       addOneAsync,
-      addOneAsync,
-    ),
+      addOneAsync
+    )
   ).toBe(12);
 });
 
 test("A loooong list of functions, last one async (async)", async () => {
   expect(
-    await devLib(
+    await chain(
       0,
       addOneSync,
       addOneSync,
@@ -126,7 +125,7 @@ test("A loooong list of functions, last one async (async)", async () => {
       addOneSync,
       addOneSync,
       addOneSync,
-      addOneAsync,
-    ),
+      addOneAsync
+    )
   ).toBe(12);
 });

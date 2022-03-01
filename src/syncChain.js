@@ -8,7 +8,7 @@
  * @param {[function]} functions - Rest of the arguments is an array of functions to be chained
  * @returns {any} - Returns the output of the last function
  */
-const syncChain = (input, ...functions) => {
+export const syncChain = (input, ...functions) => {
   try {
     const [nextFunction] = functions;
     const nextValue = nextFunction(input);
@@ -22,5 +22,3 @@ const syncChain = (input, ...functions) => {
     throw `Failed to chain ${functions} with input ${input}. ERROR: ${error.message}`;
   }
 };
-
-export default syncChain;

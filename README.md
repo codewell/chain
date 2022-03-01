@@ -30,7 +30,7 @@ import chain from '@codewell/chain';
 const addThree = n => n + 3;
 const multiplyByFive = m => m * 5;
 
-chain(1, addThree, multiplyByFive); 
+chain(1, addThree, multiplyByFive);
 // => 20
 ```
 

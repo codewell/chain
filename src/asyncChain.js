@@ -8,7 +8,7 @@
  * @param {[function]} functions - Array of functions to be chained
  * @returns {any} - Returns the output of the last function
  */
-const asyncChain = async (input, ...functions) => {
+export const asyncChain = async (input, ...functions) => {
   try {
     const [nextFunction] = functions;
     const nextValue = await nextFunction(input);
@@ -22,5 +22,3 @@ const asyncChain = async (input, ...functions) => {
     throw `Failed to chain ${functions} with input ${input}. ERROR: ${error.message}`;
   }
 };
-
-export default asyncChain;

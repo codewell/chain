@@ -1,9 +1,9 @@
-import validFunctions from "./validFunctions";
-import syncChain from "./syncChain";
-import asyncChain from "./asyncChain";
-import containsAsyncFunction from "./containsAsyncFunction";
+import { validFunctions } from "./validFunctions";
+import { syncChain } from "./syncChain";
+import { asyncChain } from "./asyncChain";
+import { containsAsyncFunction } from "./containsAsyncFunction";
 
-const chain = (...parameters) => {
+export const chain = (...parameters) => {
   if (parameters.length === 0) {
     return null;
   }
@@ -25,5 +25,3 @@ const chain = (...parameters) => {
 
   return syncChain(nextValue, ...functions);
 };
-
-export default chain;
