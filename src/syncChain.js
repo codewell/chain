@@ -10,15 +10,17 @@
  */
 export const syncChain = (input, ...functions) => {
   try {
-    const [nextFunction] = functions;
+    const [nextFunction, ...nextFunctions] = functions;
     const nextValue = nextFunction(input);
 
     if (functions.length === 1) {
       return nextValue;
     }
 
-    return syncChain(nextValue, ...functions.slice(1));
+    return syncChain(nextValue, ...nextFunctions);
   } catch (error) {
-    throw `Failed to chain ${functions} with input ${input}. ERROR: ${error.message}`;
+    throw new Error(`Failed to chain ${functions} with input ${input}.`, {
+      cause: error,
+    });
   }
 };
