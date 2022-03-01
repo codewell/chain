@@ -8,15 +8,13 @@ export const chain = (...parameters) => {
     return null;
   }
 
-  const [nextValue] = parameters;
+  const [nextValue, ...functions] = parameters;
   if (parameters.length === 1) {
     return nextValue;
   }
 
-  const functions = parameters.slice(1);
-
   if (!validFunctions(functions)) {
-    throw new Error(`Invalid function argument.`);
+    throw new Error("Invalid function argument.");
   }
 
   if (containsAsyncFunction(functions)) {
